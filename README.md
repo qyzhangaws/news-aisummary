@@ -47,3 +47,8 @@ pip3 install -r requirements.txt
 sam build --use-container
 sam deploy --guided
 ```
+
+
+#### DynamoDB query
+
+aws dynamodb query --table-name crypto_article_summaries --index-name website-date-index --key-condition-expression "website = :website AND publish_date BETWEEN :start_date AND :end_date" --expression-attribute-values '{":website": {"S":"https://news.bitcoin.com"}, ":start_date": {"S":"2024-07-08"}, ":end_date":{"S":"2024-07-08"}}'
