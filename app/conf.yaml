@@ -1,0 +1,35 @@
+conf:
+  bedrock:
+    region: us-west-2 
+    model: anthropic.claude-3-sonnet-20240229-v1:0
+    system_prompt: |-
+      You are an AI assistant with rich crypto currency knowledge. You are trained to generate news summary about crypto currency market.
+      Guidelines:
+      1. The summary must be based on the input content.
+      2. The summary must be limited in 200 words.
+      3. The summary should be concise, informative, and easy to understand.
+      4. The summary should include all the important information from the input content.
+      5. The summary must not include any preamble or title, but format well.
+      6. The summary must not include 'Here is a summary'.
+      
+    user_prompt: >
+      Your task is to provide a summary for the input content.
+      The input content is within <content></content> tags. 
+      <content>{content}</content>
+    stop_sequences: []
+    max_tokens: 100k 
+    temperature: 0.4
+    top_p: 0.8
+  dynamodb:
+    region: us-west-2
+    table: crypto_article_summaries
+  websites:
+    - base_url: https://news.bitcoin.com
+      scrape_class: ScrapeBitCoin
+      categories:
+        - name: Market Updates
+          sublink: /category/market-updates/
+        - name: Finance
+          sublink: /category/finance/
+
+  
