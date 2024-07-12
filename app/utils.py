@@ -33,6 +33,19 @@ def cleanup_tmp_space():
     """
     Clean up temporary files and directories created during the execution of the program.
     """
-    TMP_PATH = "/tmp"
-    if os.path.exists(TMP_PATH):
-        shutil.rmtree(TMP_PATH)
+    tmp_dir = "/tmp/"
+    
+    # Iterate over all entries in the /tmp/ directory
+    for entry in os.listdir(tmp_dir):
+        # Skip the . and .. entries
+        if entry in ('.', '..'):
+            continue
+        
+        entry_path = os.path.join(tmp_dir, entry)
+        
+        # If the entry is a directory, remove it recursively
+        if os.path.isdir(entry_path):
+            shutil.rmtree(entry_path)
+        # If the entry is a file, remove it
+        elif os.path.isfile(entry_path):
+            os.remove(entry_path)

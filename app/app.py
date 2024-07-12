@@ -66,7 +66,6 @@ def handler(event, context):
                     publish_date = raw_article_obj["date"],
                     website = website_item["base_url"] 
                 )
-        utils.cleanup_tmp_space()
 
 if __name__ == "__main__":
     handler(None, None)

@@ -10,6 +10,8 @@ Globals:
   Function:
     Timeout: 900
     MemorySize: 4096
+    EphemeralStorage: 
+      Size: 10240
 
 Resources:
   ScheduledLambdaFunction:
